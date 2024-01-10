@@ -1,4 +1,4 @@
-import { EntityManager, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Customer } from '@/domain/customers/entities/customer.entity';
 import { ICustomerRepository } from '@/domain/customers/repositories/customer.repository.interface';
 import { CustomerEntity } from '@/infrastructure/database/entities/customer.entity';

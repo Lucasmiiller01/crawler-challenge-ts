@@ -9,6 +9,7 @@ export function getConfig(): TypeOrmModuleOptions {
     username: process.env.DB_USERNAME || 'user',
     password: process.env.DB_PASSWORD || 'pass',
     database: process.env.DB_NAME || 'db',
+    entities: [__dirname + '/**/*.entity{.ts,.js}'],
     synchronize: !isProduction,
   };
 }

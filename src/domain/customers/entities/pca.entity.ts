@@ -5,6 +5,8 @@ export class PCA {
     public status: string,
     public year: number,
     public estimatedExerciseBudget: number,
+    public customerId?: number,
+    public readonly id?: number,
 
   ) {
   }

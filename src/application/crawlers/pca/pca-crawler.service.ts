@@ -1,22 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { GetPcasByCustomerUseCase } from './use-cases/get-pca-by-customer.use-case';
-import { SearchCustomerUseCase } from './use-cases/search-customer.use-case';
+import { GetPcasByCustomerUseCase } from './use-cases/browser/get-pca-by-customer.use-case';
+import { SearchCustomerUseCase } from './use-cases/browser/search-customer.use-case';
 import puppeteer from 'puppeteer';
-import { FindOrCreateCustomerUseCase } from './use-cases/find-or-create-customer.use-case';
+import { CreateCustomerUseCase } from './use-cases/customer/create-customer.use-case';
+import { FindByCnpjCustomerUseCase } from './use-cases/customer/find-by-cnpj-customer.use-case';
+
+import { CreatePCAUseCase } from './use-cases/pca/create-pca.use-case';
+import { extractNumbers } from '@/shared/helpers/string.helper';
 
 @Injectable()
 export class PcaCrawlerService {
   constructor(
     private readonly searchCustomerUseCase: SearchCustomerUseCase,
     private readonly getPcasByCustomerUseCase: GetPcasByCustomerUseCase,
-    private readonly findOrCreateCustomerUseCase: FindOrCreateCustomerUseCase,
-
+    private readonly createPCAUseCase: CreatePCAUseCase,
+    private readonly createCustomerUseCase: CreateCustomerUseCase,
+    private readonly findByCnpjCustomerUseCase: FindByCnpjCustomerUseCase,
   ) {}
 
   async runCrawler() {
     const searchTextCustomer = 'cliente de testes';
     const browser = await puppeteer.launch({
-      headless: 'new', 
+      headless: 'new',
     });
     const page = await browser.newPage();
     try {
@@ -25,11 +30,22 @@ export class PcaCrawlerService {
         waitUntil: 'domcontentloaded',
       });
 
-      const customerData = await this.searchCustomerUseCase.execute(page, searchTextCustomer);
-      const customer = await this.findOrCreateCustomerUseCase.execute(customerData)
-      console.log(customer)
+      const customerData = await this.searchCustomerUseCase.execute(
+        page,
+        searchTextCustomer,
+      );
+      customerData.cnpj = extractNumbers(customerData.cnpj);
 
-    //  await this.getPcasByCustomerUseCase.execute(page);
+      await this.createCustomerUseCase.execute(customerData);
+
+      const customer = await this.findByCnpjCustomerUseCase.execute(
+        customerData.cnpj,
+      );
+
+      const pcas = await this.getPcasByCustomerUseCase.execute(page);
+      for (let i = 0; i < pcas.length; i++) {
+        await this.createPCAUseCase.execute(pcas[i], customer.id);
+      }
     } finally {
       await browser.close();
     }

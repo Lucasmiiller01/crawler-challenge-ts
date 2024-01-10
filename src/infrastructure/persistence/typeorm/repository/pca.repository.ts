@@ -4,7 +4,7 @@ import { IPCARepository } from '@/domain/customers/repositories/pca.repository.i
 import { InjectRepository } from '@nestjs/typeorm';
 import { PCAEntity } from '@/infrastructure/database/entities/pca.entity';
 
-export class CustomerRepository implements IPCARepository {
+export class PCARepository implements IPCARepository {
   constructor(
     @InjectRepository(PCAEntity)
     private repository: Repository<PCAEntity>,
@@ -23,8 +23,9 @@ export class CustomerRepository implements IPCARepository {
     status: string,
     year: number,
     estimatedExerciseBudget: number,
+    idCustomer: number
   ): PCA {
-    const pca = new PCA(name, status, year, estimatedExerciseBudget);
+    const pca = new PCA(name, status, year, estimatedExerciseBudget, idCustomer);
     return pca;
   }
 }

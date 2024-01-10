@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { PCA as PCADomain } from '@/domain/customers/entities/pca.entity';
+import { CustomerEntity } from './customer.entity';
 
 @Entity('pcas')
 export class PCAEntity implements PCADomain {
@@ -17,4 +18,11 @@ export class PCAEntity implements PCADomain {
   
   @Column()
   estimatedExerciseBudget: number;
+
+  @ManyToOne(() => CustomerEntity, { nullable: true })
+  @JoinColumn({ name: 'customerId' }) 
+  customer: CustomerEntity;
+
+  @Column()
+  customerId: number;
 }

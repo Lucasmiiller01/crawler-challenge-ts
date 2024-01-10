@@ -5,8 +5,8 @@ services:
     image: postgres:latest
     container_name: desafio-npl-postgres
     environment:
-      POSTGRES_DB: desafioNpl
-      POSTGRES_USER: desafio
-      POSTGRES_PASSWORD: npl
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:5432"

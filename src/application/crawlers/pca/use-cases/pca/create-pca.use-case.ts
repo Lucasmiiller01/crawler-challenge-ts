@@ -19,7 +19,6 @@ export class CreatePCAUseCase {
   public async execute(PCAInput: PCAInput, idCustomer: number): Promise<void> {
     const pcaExists = await this.pcaRepository.findByName(PCAInput.name);
     if (!pcaExists) {
-      console.log(idCustomer)
       const pcaData = this.pcaRepository.create(
         PCAInput.name,
         PCAInput.status,

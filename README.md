@@ -1,73 +1,47 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Desafio-NPL
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Bem-vindo ao Desafio-NPL, um projeto incrível que faz XYZ.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Pré-requisitos
 
-## Description
+Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Docker](https://docs.docker.com/get-docker/)
+- [Node.js](https://nodejs.org/)
 
-## Installation
+## Configuração do Ambiente
 
-```bash
-$ npm install
-```
+1. **Clone o Repositório:**
+    ```bash
+    git clone https://seurepositorio.com/desafio-npl.git
+    cd desafio-npl
+    ```
 
-## Running the app
+2. **Adicionar variaveis de ambiente:**
+   - Basta renomear o .env.sample para .env
 
-```bash
-# development
-$ npm run start
+3. **Inicar projeto com docker:**
+   - Abra o terminal e navegue até o diretório raiz do projeto.
+   - Execute o seguinte comando para iniciar o contêiner com BD PostgreSQL e o Projeto Nest:
+     ```bash
+     docker-compose up -d --build
+     ```
+   - Aguarde até que o contêiner esteja em execução.
 
-# watch mode
-$ npm run start:dev
+4. **Acesso à Aplicação:**
+   - Após a conclusão das etapas anteriores, você pode acessar a aplicação em [http://localhost:3000](http://localhost:3000).
 
-# production mode
-$ npm run start:prod
-```
+5. **Desligando o Ambiente:**
+   - Para parar os contêineres, execute o seguinte comando no terminal:
+     ```bash
+     docker-compose down
+     ```
 
-## Test
+6. **Personalização e Configurações Adicionais:**
+   - Para personalizar ou ajustar configurações específicas, consulte os arquivos `Dockerfile`, `docker-compose.yml` e qualquer arquivo de configuração no diretório do seu projeto.
 
-```bash
-# unit tests
-$ npm run test
+## Contribuição
 
-# e2e tests
-$ npm run test:e2e
+Se você quiser contribuir para o projeto, siga as diretrizes de contribuição no arquivo CONTRIBUTING.md.
 
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+---

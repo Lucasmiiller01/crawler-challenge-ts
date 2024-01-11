@@ -22,6 +22,8 @@ export class PcaCrawlerService {
     const searchTextCustomer = 'cliente de testes';
     const browser = await puppeteer.launch({
       headless: 'new',
+      args: ['--no-sandbox'],
+
     });
     const page = await browser.newPage();
     try {

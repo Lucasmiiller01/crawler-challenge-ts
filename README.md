@@ -1,6 +1,8 @@
 # Desafio-NPL
 
-Bem-vindo ao Desafio-NPL, um projeto incrível que faz XYZ.
+Bem-vindo ao Desafio-NPL, um projeto realizado para a vaga de dev typescript.
+Esse projeto tem como objetivo navegar na pagina https://www.bpsaude.com.br/Transparencia/, a cada 10 minutos, e 
+realizar a persistência do cliente e seus pcas.
 
 ## Pré-requisitos
 
@@ -28,20 +30,13 @@ Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
      ```
    - Aguarde até que o contêiner esteja em execução.
 
-4. **Acesso à Aplicação:**
-   - Após a conclusão das etapas anteriores, você pode acessar a aplicação em [http://localhost:3000](http://localhost:3000).
-
+4. **Monitorar log do projeto em execução:**
+   - Execute o seguinte comando para listar os logs da aplicacao:
+     ```bash
+     docker logs desafio-npl-node-app 
+     ```
 5. **Desligando o Ambiente:**
    - Para parar os contêineres, execute o seguinte comando no terminal:
      ```bash
      docker-compose down
      ```
-
-6. **Personalização e Configurações Adicionais:**
-   - Para personalizar ou ajustar configurações específicas, consulte os arquivos `Dockerfile`, `docker-compose.yml` e qualquer arquivo de configuração no diretório do seu projeto.
-
-## Contribuição
-
-Se você quiser contribuir para o projeto, siga as diretrizes de contribuição no arquivo CONTRIBUTING.md.
-
----

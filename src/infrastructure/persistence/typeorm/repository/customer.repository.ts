@@ -11,7 +11,7 @@ export class CustomerRepository implements ICustomerRepository {
   ) {}
 
   async findByCnpj(cnpj: string): Promise<Customer | null> {
-    return this.repository.findOne({ where: { cnpj } });
+    return this.repository.findOne({ where: { cnpj }, relations: { pcas: true} });
   }
 
   async save(customer: Customer): Promise<void> {

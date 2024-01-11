@@ -27,6 +27,14 @@ RUN npm install
 
 # Copia o restante dos arquivos do projeto
 COPY . .
+# Instala o Chromium manualmente
+RUN apt-get update && \
+    apt-get install -y chromium && \
+    ln -sf /usr/bin/chromium /usr/bin/chromium-browser
+
+# Configuração necessária para o Puppeteer funcionar no ambiente headless
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Inicia o projeto Nest.js
 CMD ["npm", "start"]

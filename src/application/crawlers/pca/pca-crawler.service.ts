@@ -43,13 +43,20 @@ export class PcaCrawlerService {
       const customer = await this.findByCnpjCustomerUseCase.execute(
         customerData.cnpj,
       );
-
       const pcas = await this.getPcasByCustomerUseCase.execute(page);
       for (let i = 0; i < pcas.length; i++) {
         await this.createPCAUseCase.execute(pcas[i], customer.id);
       }
+      const customerWithPcas = await this.findByCnpjCustomerUseCase.execute(
+        customerData.cnpj,
+      );
+      console.log(customerWithPcas, 'customer com pcas recuperado')
+      console.log('Crawler finalizado !')
+
+    }catch(error) {
+      console.log(error)
     } finally {
-      await browser.close();
+      await browser.close();      
     }
   }
 }

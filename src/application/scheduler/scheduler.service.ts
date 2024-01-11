@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { PcaCrawlerService } from '../crawlers/pca/pca-crawler.service';
 
 @Injectable()
@@ -9,8 +9,7 @@ export class SchedulerService {
     // Executar imediatamente no início
     this.runCrawlerJob();
   }
-  // Rodar a cada 1 minuto
-  @Cron("0 */1 * * * *")
+  @Cron(CronExpression.EVERY_10_MINUTES)
   async runCrawlerJob() {
     console.log('Executing crawler job...');
     await this.pcaCrawlerService.runCrawler();

@@ -11,7 +11,7 @@ export class PCARepository implements IPCARepository {
   ) {}
 
   async findByName(name: string): Promise<PCA | null> {
-    return this.repository.findOne({ where: { name } });
+    return this.repository.findOne({ where: { name }, relations: { customer: true } });
   }
 
   async save(customer: PCA): Promise<void> {

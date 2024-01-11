@@ -1,6 +1,5 @@
-# Desafio-NPL
+# Crawler
 
-Bem-vindo ao Desafio-NPL, um projeto realizado para a vaga de dev typescript.
 Esse projeto tem como objetivo navegar na pagina https://www.bpsaude.com.br/Transparencia/, a cada 10 minutos, e 
 realizar a persistência do cliente e seus pcas.
 
